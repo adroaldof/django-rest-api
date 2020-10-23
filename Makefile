@@ -7,7 +7,7 @@ DOCKER_EXEC=docker-compose exec api
 DOCKER_TEST=docker-compose -f docker-compose.test.yml run --rm
 
 
-.PHONY: start stop bash shell migration migrate seed test coverage clean
+.PHONY: start stop bash shell migration migrate seed test coverage lint clean
 
 start: stop
 	@echo "$(BLUE)--> Running with Docker$(RESET_COLOR)"
@@ -52,6 +52,11 @@ test:
 coverage:
 	@echo "$(BLUE)--> Running coverage$(RESET_COLOR)"
 	$(DOCKER_TEST) coverage
+
+
+lint:
+	@echo "$(BLUE)--> Running pylint$(RESET_COLOR)"
+	$(DOCKER_EXEC) pylint apps,api --load-plugins=pylint_django --msg-template="{path} {line} {msg_id} ({symbol}) {obj}: {msg}"
 
 
 clean:

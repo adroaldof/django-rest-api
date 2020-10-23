@@ -1,0 +1,13 @@
+[MESSAGE CONTROL]
+disable=missing-docstring,
+  abstract-method,
+  too-few-public-methods
+
+[BASIC]
+good-names=logger
+
+[FORMAT]
+max-line-length=120
+
+[SIMILARITIES]
+min-similarity-lines=5
