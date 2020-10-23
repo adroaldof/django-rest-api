@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+  api:
+    build: .
+    image: drf-api:1.0.0
+    container_name: drf-api
+    working_dir: /code
+    command: >
+      sh -c "python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DB_DATABASE: drf
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: 6dd3f53a34704afeaf3cce4684af9e05
+      DB_PASSWORD: c4e9a2e61452493785510d6a29d70658
+      SECRET_KEY: 4dzdqw@qy31y_vwz&y1y*v90n2)g39g(i#4b$$x_1p2vu-1muut
+      DEBUG: 1
+
+  db:
+    image: postgres:10.4
+    container_name: drf-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: drf
+      POSTGRES_USER: 6dd3f53a34704afeaf3cce4684af9e05
+      POSTGRES_PASSWORD: c4e9a2e61452493785510d6a29d70658
+    volumes:
+      - drf_volume:/var/lib/postgresql/data/
+
+volumes:
+  drf_volume:

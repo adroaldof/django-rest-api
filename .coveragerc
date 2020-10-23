@@ -1,0 +1,18 @@
+[run]
+branch = True
+omit =
+  */__init__.py,
+  */apps.py,
+  api/asgi.py,
+  api/wsgi.py,
+  manage.py,
+  tests/*
+
+[report]
+precision = 2
+skip_covered = True
+show_missing = True
+fail_under = 85
+
+[html]
+directory = coverage

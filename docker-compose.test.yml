@@ -1,0 +1,49 @@
+version: "3"
+
+services:
+  test: &test
+    build: .
+    image: drf-api:1.0.0
+    container_name: drf-api-test
+    working_dir: /code
+    command: >
+      sh -c "python manage.py migrate &&
+      coverage run --source='.' manage.py test"
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - dbTest
+    environment:
+      DB_DATABASE: postgres
+      DB_HOST: dbTest
+      DB_PORT: 5432
+      DB_USER: 6dd3f53a34704afeaf3cce4684af9e05
+      DB_PASSWORD: c4e9a2e61452493785510d6a29d70658
+      SECRET_KEY: 4dzdqw@qy31y_vwz&y1y*v90n2)g39g(i#4b$$x_1p2vu-1muut
+
+  coverage:
+    << : *test
+    command: >
+      sh -c "python manage.py migrate &&
+      coverage run --source='.' manage.py test &&
+      coverage html &&
+      coverage report"
+
+
+  dbTest:
+    image: postgres:10.4
+    container_name: erf-api-db-test
+    ports:
+      - 5432
+    command: postgres -D /run/pgsql-10.4-data -F
+    environment:
+      LOGGING_COLLECTOR: "on"
+      PGDATA: /run/pgsql-10.4-data
+      POSTGRES_DB: postgres
+      POSTGRES_USER: 6dd3f53a34704afeaf3cce4684af9e05
+      POSTGRES_PASSWORD: c4e9a2e61452493785510d6a29d70658
+      DOCKER_DRIVER: "overlay"
+    logging:
+      driver: none
