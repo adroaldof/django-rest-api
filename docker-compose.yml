@@ -34,7 +34,7 @@ services:
       POSTGRES_USER: 6dd3f53a34704afeaf3cce4684af9e05
       POSTGRES_PASSWORD: c4e9a2e61452493785510d6a29d70658
     volumes:
-      - drf_volume:/var/lib/postgresql/data/
+      - drf_db_volume:/var/lib/postgresql/data/
 
 volumes:
-  drf_volume:
+  drf_db_volume:
