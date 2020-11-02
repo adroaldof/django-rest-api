@@ -32,4 +32,5 @@ staticfiles/
 !.gitlab-ci.yml
 !.isort.cfg
 !.pylintrc
+!.python-version
 !static/README.md
