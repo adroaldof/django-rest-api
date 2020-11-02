@@ -64,4 +64,4 @@ clean:
 	find . | grep -E "__pycache__|.pyc$$" | xargs rm -rf
 	@echo ""
 	@echo "$(BLUE)--> Removing coverage data$(RESET_COLOR)"
-	rm -rf apps/coverage .coverage
+	rm -rf .coverage .html-coverage

@@ -15,4 +15,4 @@ show_missing = True
 fail_under = 85
 
 [html]
-directory = coverage
+directory = .html-coverage
