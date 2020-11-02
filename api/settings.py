@@ -40,9 +40,9 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THYRD_PARTY_APPS = ["rest_framework"]
+THYRD_PARTY_APPS = ["rest_framework", "rest_framework.authtoken"]
 
-PROJECT_APPS = []
+PROJECT_APPS = ["core", "user"]
 
 INSTALLED_APPS = DJANGO_APPS + THYRD_PARTY_APPS + PROJECT_APPS
 
@@ -132,3 +132,5 @@ STATIC_ROOT = "/vol/web/static"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = "/vol/web/media"
+
+AUTH_USER_MODEL = "user.User"
