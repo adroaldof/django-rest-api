@@ -42,7 +42,7 @@ DJANGO_APPS = [
 
 THYRD_PARTY_APPS = ["rest_framework", "rest_framework.authtoken"]
 
-PROJECT_APPS = ["core", "user"]
+PROJECT_APPS = ["core", "user", "address"]
 
 INSTALLED_APPS = DJANGO_APPS + THYRD_PARTY_APPS + PROJECT_APPS
 
