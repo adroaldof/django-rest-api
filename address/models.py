@@ -10,6 +10,9 @@ class Address(models.Model):
     city = models.CharField(max_length=255)
     state = models.CharField(max_length=255)
     country = models.CharField(max_length=255)
+    user = models.ForeignKey(
+        "user.User", on_delete=models.CASCADE, blank=True, null=True
+    )
 
     class Meta:
         verbose_name_plural = "Addresses"
